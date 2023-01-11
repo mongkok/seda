@@ -45,7 +45,6 @@ dependencies = [
 ]
 
 [project.urls]
-homepage = "https://github.com/mongkok/seda"
 repository = "https://github.com/mongkok/seda"
 documentation = "https://seda.domake.io"
 changelog = "https://seda.domake.io/changelog/"
