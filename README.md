@@ -13,7 +13,7 @@
         <img src="https://img.shields.io/codecov/c/github/mongkok/seda?color=%2334D058" alt="Coverage">
     </a>
     <a href="https://www.codacy.com/gh/mongkok/seda/dashboard">
-        <img src="https://app.codacy.com/project/badge/Grade/x" alt="Codacy">
+        <img src="https://app.codacy.com/project/badge/Grade/ee6de85d485d4d9fbb5592ac95cec155" alt="Codacy">
     </a>
     <a href="https://pypi.org/project/seda">
         <img src="https://img.shields.io/pypi/v/seda" alt="Package version">
