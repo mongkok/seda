@@ -22,14 +22,14 @@
 
 ## What
 
-  - [x] Allows to schedule **periodic** and **one-time** tasks on **EventBridge Scheduler**.
-  - [x] Simplifies creating, executing, and managing asynchronous task using SNS messages and Lambda events.
-  - [x] Includes `@decorators` in addition to `@app.decorators` for reusable apps.
-  - [x] Works well with any framework, interface,  toolkit... see [/templates](https://github.com/mongkok/seda/tree/main/templates).
-  - [x] Provides Serverless framework support via [plugin](https://github.com/mongkok/serverless-seda).
-  - [ ] Other event sources, e.g. CloudWatch, Kinesis, Dynamodb, SQS, S3...
-  - [ ] Easy to read documentation and tests.
-  - [ ] SAM templates and CDK support.
+*   [x] Allows to schedule **periodic** and **one-time** tasks on **EventBridge Scheduler**.
+*   [x] Simplifies creating, executing, and managing asynchronous task using SNS messages and Lambda events.
+*   [x] Includes `@decorators` in addition to `@app.decorators` for reusable apps.
+*   [x] Works well with any framework, interface,  toolkit... see [/templates](https://github.com/mongkok/seda/tree/main/templates).
+*   [x] Provides Serverless framework support via [plugin](https://github.com/mongkok/serverless-seda).
+*   [ ] Other event sources, e.g. CloudWatch, Kinesis, Dynamodb, SQS, S3...
+*   [ ] Easy to read documentation and tests.
+*   [ ] SAM templates and CDK support.
 
 ## Installation
 
@@ -60,11 +60,11 @@ async def mytask(timespec: str = "auto") -> None:
 ```
 **`main.seda`** is an AWS Lambda handler in charge of managing the creation and execution of our tasks.
 
-  - **`@schedule`:** creates a new periodic "schedule" on EventBridge at deployment time.
-  - **`@task`:** creates one-time asynchronous tasks at runtime:
-    - SNS messages: default
-    - Lambda events:  `@task(service="lambda")`
-    - EventBridge one-time schedules: `mytask.at("...")`
+*   **`@schedule`:** creates a new periodic "schedule" on EventBridge at deployment time.
+*   **`@task`:** creates one-time asynchronous tasks at runtime:
+    *   SNS messages: default
+    *   Lambda events:  `@task(service="lambda")`
+    *   EventBridge one-time schedules: `mytask.at("...")`
 
 For reusable apps use `@task` and `@schedule` decorators that always points to the currently active `Seda` instance:
 
@@ -87,9 +87,9 @@ async def mytask(timespec: str = "auto") -> str:
 await mytask()
 ```
 
-  - **SNS**: This task is executed asynchronously by sending a message to a previously subscribed SNS topic.
-  - **λ**: A second option is to directly invoke the Lambda function `InvocationType=Event` by adding the *"service"* option to the task decorator `@task(service="lambda")`.
-  - **test**: For local and test environments the task is executed synchronously by default.
+*   **SNS**: This task is executed asynchronously by sending a message to a previously subscribed SNS topic.
+*   **λ**: A second option is to directly invoke the Lambda function `InvocationType=Event` by adding the *"service"* option to the task decorator `@task(service="lambda")`.
+*   **test**: For local and test environments the task is executed synchronously by default.
 
 ## One-time schedules
  
@@ -128,10 +128,10 @@ seda deploy --app main.seda -f myfunction
 
 **Deploy `@schedule`, `@task`:**
 
-  - Creates the Schedule Groups for periodic and one-time tasks
-  - Creates N periodic schedules
-  - Creates SNS topic and a Lambda subscription to this topic
-  - Adds related IAM roles and policies
+*   Creates the Schedule Groups for periodic and one-time tasks
+*   Creates N periodic schedules
+*   Creates SNS topic and a Lambda subscription to this topic
+*   Adds related IAM roles and policies
 
 A second deployment removes the periodic task Schedule Group and creates a new one adding the new schedules.
 
