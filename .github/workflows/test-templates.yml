@@ -1,0 +1,40 @@
+name: Test Templates
+
+on:
+  push:
+
+  pull_request:
+    branches: ['main']
+
+jobs:
+  tests:
+    name: Python ${{ matrix.python-version }} - ${{ matrix.framework }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: templates/${{ matrix.framework }}
+
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11']
+        framework: ['django', 'falcon', 'fastapi', 'starlette', 'vanilla']
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - uses: actions/cache@v3
+        with:
+          path: ${{ env.pythonLocation }}
+          key: ${{ runner.os }}-python-${{ matrix.python-version }}-${{ matrix.framework }}-${{ hashFiles('pyproject.toml') }}
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Tests
+        run: poetry run scripts/test

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -e
+
+exec python manage.py runserver ${HOST:-127.0.0.1}:${PORT:-8000}

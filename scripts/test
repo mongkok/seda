@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -ex
+
+scripts/check
+
+pytest \
+    --cov=seda \
+    --cov=tests \
+    --cov-report=term-missing \
+    --cov-report=xml \
+    tests ${@}

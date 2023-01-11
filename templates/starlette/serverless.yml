@@ -1,0 +1,31 @@
+frameworkVersion: '3'
+service: starlette-template
+
+provider:
+  name: aws
+  runtime: python3.9
+
+functions:
+  app:
+    handler: app.main.seda
+    seda: true
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+
+plugins:
+  - serverless-seda
+  - serverless-python-requirements
+  - serverless-offline
+
+package:
+  patterns:
+    - '!.env'
+    - '!.*_cache/**'
+    - '!app/tests/**'
+    - '!node_modules/**'
+    - '!venv/**'

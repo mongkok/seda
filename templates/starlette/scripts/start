@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+
+exec uvicorn --reload \
+    --host ${HOST:-0.0.0.0} \
+    --port ${PORT:-80} \
+    --log-level ${LOG_LEVEL:-info} \
+    app.main:app

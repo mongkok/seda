@@ -1,0 +1,30 @@
+[build-system]
+requires = ["poetry"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry]
+name = "vanilla-template"
+description = ""
+version = "0.1.0"
+authors = ["me"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+seda = {extras = ["asgi"], version = "*"}
+
+[tool.poetry.group.dev.dependencies]
+autoflake = "*"
+black = "*"
+flake8 = "*"
+isort = "*"
+mypy = "*"
+pytest = "*"
+pytest-asyncio = "*"
+pytest-cov = "*"
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+disallow_untyped_defs = true
+ignore_missing_imports = true

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -ex
+
+flake8 app
+black --check app
+isort --known-local-folder app --check-only app
+mypy --install-type --non-interactive app

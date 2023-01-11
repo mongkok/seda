@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -ex
+
+scripts/check
+
+pytest \
+    --cov=app \
+    --cov-report=term-missing \
+    --cov-report=xml \
+    app/tests ${@}

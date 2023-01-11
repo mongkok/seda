@@ -1,0 +1,95 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "seda"
+description = "A Python toolkit to build Serverless Event-Driven Applications on AWS."
+readme = "README.md"
+license = "BSD-3-Clause"
+requires-python = ">=3.7"
+dynamic = ["version"]
+authors = [
+  { name = "Dani", email = "dani@domake.io" },
+]
+keywords = ["aws", "event-driven", "scheduler", "serverless"]
+
+classifiers = [
+    "License :: OSI Approved :: BSD License",
+    "Development Status :: 1 - Planning",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "anyio >=3.4.0",
+    "botocore >=1.29.7",
+    "click >=7.0",
+    "typing-extensions;python_version < '3.11'",
+]
+
+[project.urls]
+homepage = "https://github.com/mongkok/seda"
+repository = "https://github.com/mongkok/seda"
+documentation = "https://seda.domake.io"
+changelog = "https://seda.domake.io/changelog/"
+
+[project.optional-dependencies]
+test = [
+    "black",
+    "codecov",
+    "flake8",
+    "isort",
+    "mypy",
+    "pytest",
+    "pytest-cov",
+]
+
+doc = [
+    "mkdocs",
+    "mkdocs-material",
+    "markdown-include",
+    "mkdocstrings[python]",
+]
+
+asgi = [
+    "mangum",
+]
+
+[project.scripts]
+seda = "seda.cli:main"
+
+[tool.hatch.version]
+path = "seda/__init__.py"
+
+[tool.hatch.build]
+exclude = ["templates"]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if t.TYPE_CHECKING:"
+]
